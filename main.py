@@ -34,7 +34,17 @@ options.add_argument("--log-level=3")
 # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
 
 s = Service(CHROMEDRIVER_PATH)
+# driver = webdriver.Chrome(service=s)
+# usernameStr = 'osuyuanqi'
+# passwordStr = 'xxx'
+
 driver = webdriver.Chrome(service=s)
+
+def login(url,usernameId, username, passwordId, password, submit_buttonId):
+   driver.get(url)
+   # driver.find_element(By.ID,usernameId).send_keys(username)
+   # driver.find_element(By.ID,passwordId).send_keys(password)
+   # driver.find_element(By.ID,submit_buttonId).click()
 
 # Get upto which problem it is already scraped from track.conf file
 completed_upto = read_tracker("track.conf")
@@ -51,7 +61,8 @@ def download(problem_num, url, title, solution_slug):
     try:
 
         driver.get(url)
-        print(url)
+        # print(url+"aaaaa")
+
         # Wait 20 secs or until div with id initial-loading disappears
         element = WebDriverWait(driver, 20).until(
             EC.invisibility_of_element_located((By.ID, "initial-loading"))
@@ -59,7 +70,7 @@ def download(problem_num, url, title, solution_slug):
         # Get current tab page source
         html = driver.page_source
         soup = bs4.BeautifulSoup(html, "html.parser")
-
+        # print(html,soup,"bbbbb")
         # Construct HTML
         title_decorator = '*' * n
         problem_title_html = title_decorator + f'<div id="title">{title}</div>' + '\n' + title_decorator
@@ -107,12 +118,16 @@ def main():
     # List to store question_title_slug
     links = []
     # extract all the topics that you prefer. e.g. topic is 1,2,3
-    target_topic =[1,2,3]
+    # target_topic =[146,200,56,253,273,588,49,79,17,54,212,23,33,460,295,443,51,362,297,138,25,716,44,207,128,151,1647,103,706,1405,1344,1578,348,233,1448,1275,93,1822,979,895,340,545,769,622,1615,1304,285,462,768,984]
+    # login("https://leetcode.com/accounts/login/","id_login",usernameStr,"id_password",passwordStr,"signin_btn")
+    target_topic = [1,2,3]
+    # print(algorithms_problems_json["stat_status_pairs"])
     for child in algorithms_problems_json["stat_status_pairs"]:
             for j in target_topic:
                 # question_id is the topic id
                 if child['stat']['question_id'] == j:
-                    # print(j)
+                    print(child["stat"])
+
                     question__title_slug = child["stat"]["question__title_slug"]
                     question__article__slug = child["stat"]["question__article__slug"]
                     question__title = child["stat"]["question__title"]
