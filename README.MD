@@ -1,6 +1,4 @@
-This project was mainly based on [Bishalsarang](https://github.com/Bishalsarang/Leetcode-Questions-Scraper).
-
-[LeetCode API](https://leetcode.com/api/problems/algorithms/)
+This project was mainly based on [Bishalsarang](https://github.com/Bishalsarang/Leetcode-Questions-Scraper), [LeetCode API](https://leetcode.com/api/problems/algorithms/)
 
 What I did? just main.py
 
