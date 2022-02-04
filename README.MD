@@ -1,6 +1,6 @@
 This project was mainly based on [Bishalsarang](https://github.com/Bishalsarang/Leetcode-Questions-Scraper), [LeetCode API](https://leetcode.com/api/problems/algorithms/)
 
-I adjust main.py to personal needs, any voice is welcome. yuanqingxiao@gmail.com
+I adjust main.py to personal needs, any voice or suggestion is welcome. yuanqingxiao@gmail.com
 
 - find out the specific topics and output them into out.html. e.g. If you want to download the Google interview topics, let's say 2,3,4. You may follow the following steps:
   - 1. delete the out.html
